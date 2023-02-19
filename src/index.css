@@ -9,6 +9,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
+  margin-bottom: 200px;
 }
 
 a {
@@ -76,14 +77,15 @@ h3 {
 }
 
 .heading {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   padding: 0 20px;
 }
 
 .heading p {
   color: #828282;
+  font-size: 1rem
 }
 
 .boxes {
@@ -237,24 +239,38 @@ h3 {
   text-align: center;
 }
 
-.status-new {
+.collect-done {
   background-color: green;
   color: #fff;
   border-radius: 10px;
 }
 
-.status-open {
+.collect-todo {
   background-color: steelblue;
   color: #fff;
   border-radius: 10px;
 }
 
-.status-closed {
+.collect-fail {
   background-color: darkred;
   color: #fff;
   border-radius: 10px;
 }
-
+.role-admin {
+  background-color: darkred;
+  color: #fff;
+  border-radius: 10px;
+}
+.role-staff {
+  background-color: steelblue;
+  color: #fff;
+  border-radius: 10px;
+}
+.role-partner {
+  background-color: green;
+  color: #fff;
+  border-radius: 10px;
+}
 .ticket-page {
   position: relative;
   text-align: left;
@@ -264,6 +280,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 1.2rem;
 }
 
 .ticket-page .btn {

@@ -6,7 +6,7 @@ import UserItem from "../../components/UserItem";
 import { getCollects } from "../../features/collect/collectSlice";
 
 
-function PrivateCollectsToDo() {
+function PrivateCollectsAssign() {
 
     const {collects, isLoading, isSuccess, isError} = useSelector((state) => state.collect)
 
@@ -25,8 +25,8 @@ function PrivateCollectsToDo() {
   return (
     <>
       <section className="heading">
-        <h4>Collectes à effectuer</h4>
-        <p>Listes des collectes a effectuer.</p>
+        <h4>Collectes à assigner</h4>
+        <p>Listes des collectes à assigner a un membre du staff.</p>
     </section>
     <section>
     <div className="tickets">
@@ -35,10 +35,8 @@ function PrivateCollectsToDo() {
                 <div>client</div>
                 <div >status</div>
             </div>
-            {/* {collects.data.map((collect) =>(
-                <CollectItem key={collect._id} collect={collect}/>
-            ) )} */}
-            {collects.data.filter(collect => collect.status === "todo" || collect.status === "fail").map((collect) =>(
+       
+            {collects.data.filter(collect => collect.assigned === false).map((collect) =>(
                 <CollectItem key={collect._id} collect={collect}/>
             ) )}
         </div>
@@ -47,4 +45,4 @@ function PrivateCollectsToDo() {
   )
 }
 
-export default PrivateCollectsToDo
+export default PrivateCollectsAssign

@@ -8,7 +8,6 @@ const login = async (userData) => {
 
   if (response.data) {
     localStorage.setItem("userToken", JSON.stringify(response.data.token));
-  
   }
   return response.data;
 };
@@ -16,7 +15,6 @@ const login = async (userData) => {
 // Logout
 const logout = () => {
   localStorage.removeItem("userToken");
- 
 };
 
 const authService = {
