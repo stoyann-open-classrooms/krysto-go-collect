@@ -1,5 +1,5 @@
 import {  FaSignOutAlt } from "react-icons/fa";
-
+import logo from '../assets/logo_krysto.png'
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
@@ -20,13 +20,15 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <Link to={"/"}>Krysto-go collecte</Link>
+        <Link to={"/"}>
+         <img src={logo} alt="" />
+        </Link>
       </div>
 
       <ul>
         {user ? (
           <li>
-            <button className="btn" onClick={onLogout}>
+            <button className="btn btn-sm" onClick={onLogout}>
               {" "}
               <FaSignOutAlt /> deconnection{" "}
             </button>

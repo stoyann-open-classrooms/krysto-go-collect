@@ -5,7 +5,8 @@ function CollectItem({collect}) {
   return (
     <div className='ticket'>
         <div>{new Date(collect.collectDemandeDate).toLocaleDateString()}</div>
-        <div>{collect.collectPoint.partnerName}</div>
+         {collect.collectPoint.partnerName ? (<div>{collect.collectPoint.partnerName}</div>) : ("")}
+         {collect.quantityCollected ? (<div>{collect.quantityCollected} KG</div>) : ("")}
         <div className={`status collect-${collect.status}`} >{collect.status}</div>
         <Link className='btn btn-reverse btn-sm' to={`/private/collect-details/${collect._id}`}>Détails</Link>
     </div>

@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BackButton } from "../../components/BackButton";
 
 function PrivateUsersAdmin() {
   return (
     <>
       <section className="heading">
+        <BackButton url={'/private/home'}/>
         <h4>Gestion des utilisateurs</h4>
         <p>
           Vous devez avoir le status admin pour acceder a ces fonctionalités

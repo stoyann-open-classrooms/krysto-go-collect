@@ -1,23 +1,23 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import collectService from './collectService'
+import collectPointService from './collectPointService'
+
 
 const initialState = {
-  collects: [],
-  collect: {},
-  isError: false,
-  isSuccess: false,
-  isLoading: false,
-  message: '',
+    collectPoints: [],
+    collectPoint: {},
+    isError: false,
+    isSuccess: false,
+    isLoading: false,
+    message: ''
 }
 
 
-
 // Get all collects
-export const getCollects = createAsyncThunk(
-  'collects/getAll',
+export const getCollectPoints = createAsyncThunk(
+  'collectPoints/getAll',
   async (_, thunkAPI) => {
     try {
-      return await collectService.getCollects()
+      return await  collectPointService.getCollectPoints()
     } catch (error) {
       const message =
         (error.response &&
@@ -29,11 +29,11 @@ export const getCollects = createAsyncThunk(
     }
   },
 )
-export const getCollect = createAsyncThunk(
-  'collects/get',
-  async (collectId, thunkAPI) => {
+export const getCollectPoint = createAsyncThunk(
+  'collectPoints/get',
+  async (collectPointId, thunkAPI) => {
     try {
-      return await collectService.getCollect(collectId)
+      return await collectPointService.getCollectPoint(collectPointId)
     } catch (error) {
       const message =
         (error.response &&
@@ -46,8 +46,8 @@ export const getCollect = createAsyncThunk(
   },
 )
 
-export const collectSlice = createSlice({
-  name: 'collect',
+export const collectPointSlice = createSlice({
+  name: 'collectPoint',
   initialState,
   reducers: {
     reset: (state) => initialState,
@@ -55,39 +55,42 @@ export const collectSlice = createSlice({
   extraReducers: (builder) => {
     builder
      
-      .addCase(getCollects.pending, (state) => {
+      .addCase(getCollectPoints.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(getCollects.fulfilled, (state, action) => {
+      .addCase(getCollectPoints.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.collects = action.payload
+        state.collectPoints = action.payload
       })
-      .addCase(getCollects.rejected, (state, action) => {
+      .addCase(getCollectPoints.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
-        state.collects = null
+        state.collectPoints = null
       })
      
-      .addCase(getCollect.pending, (state) => {
+      .addCase(getCollectPoint.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(getCollect.fulfilled, (state, action) => {
+      .addCase(getCollectPoint.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.collect = action.payload
+        state.collectPoint = action.payload
       })
-      .addCase(getCollect.rejected, (state, action) => {
+      .addCase(getCollectPoint.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
-        state.collect = null
+        state.collectPoint = null
       })
 
   
   },
 })
 
-export const { reset } = collectSlice.actions
-export default collectSlice.reducer
+export const { reset } = collectPointSlice.actions
+export default collectPointSlice.reducer
+
+
+

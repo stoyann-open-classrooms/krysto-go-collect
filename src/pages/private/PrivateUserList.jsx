@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { getUsers , reset } from "../../features/user/userSlice"
 import Spinner from "../../components/spinner/Spinner" 
 import UserItem from "../../components/UserItem"
+import { BackButton } from "../../components/BackButton"
 
 function PrivateUserList() {
 
@@ -23,16 +24,16 @@ function PrivateUserList() {
   return (
     <>
     <section className="heading">
-        <h3>Liste des uttilisateurs</h3>
+        <BackButton url={'/private/users-admin'}/>
+        <h3>Liste des utilisateurs</h3>
         <p>supprimer ou modifier un utilisateur vous devez avoir le status admin pour effectuer ces actions.</p>
     </section>
     <section>
-        Nombres d'uttilisateurs: {users.count}
         <div className="tickets">
             <div className="ticket-headings">
                 <div>date de création</div>
-                <div>username</div>
                 <div >role</div>
+                <div >Raison sociale</div>
             </div>
             {users.data.map((user) =>(
                 <UserItem key={user.id} user={user}/>

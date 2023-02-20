@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { BackButton } from '../../components/BackButton';
 import Spinner from '../../components/spinner/Spinner';
 import { getUser } from '../../features/user/userSlice';
 function PrivateUserDetails() {
@@ -31,8 +32,19 @@ function PrivateUserDetails() {
       return <div className="ticket-page"> 
       
         <header className="ticket-header">
-            <button className="btn btn-sm">Retour</button>
-            <h2>Username : {user.data.username} <span>{user.data.email}</span></h2>
+            <BackButton url={'/private/user-list'}/>
+            {user.data.compagny ? ( 
+          <>
+            <h2>Raison sociale : {user.data.compagny.compagnyName} <span>{user.data.email}</span></h2>
+            <h2> RIDET : {user.data.compagny.ridet}</h2>
+          </>
+          
+        ) : (
+           <div>Particulier</div>
+        )}
+
+
+            
             <h2>ID de l'utilisateur : {user.data._id} <span className={`status role-${user.data.role}` }>{user.data.role}</span></h2>
             
             <hr />
@@ -46,11 +58,11 @@ function PrivateUserDetails() {
             <p>{collect.data.collectPoint.location.formattedAddress}</p>
             </div> */}
         </header>
-        <section>
+        
+       
+        <button className="btn btn-block ">Modifier l'utilisateur </button>
+        <button className="btn btn-block btn-danger">Supprimerl'utilisateur </button>
     
-    
-    
-        </section>
        </div>;
 }
 

@@ -65,8 +65,11 @@ function Login() {
     <>
       {user ? (
         <>
-          <Link className="btn" to={"/private/home"}>
-            Allez a l'acceuil
+         <section className="heading">
+          Bienvenue sur l'application KRYSTO-GO !
+         </section>
+          <Link className="btn btn-sm" to={"/private/home"}>
+            Accueil
           </Link>
         </>
       ) : (

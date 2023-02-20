@@ -3,12 +3,14 @@ import authReducer from '../features/auth/authSlice'
 import collectReducer from '../features/collect/collectSlice'
 import userReducer from '../features/user/userSlice'
 import messageReducer from '../features/message/messageSlice'
+import collectPointReducer from '../features/collectPoint/collectPointSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     collect: collectReducer,
     user: userReducer,
-    message: messageReducer
+    message: messageReducer,
+   collectPoint: collectPointReducer
   },
 });
