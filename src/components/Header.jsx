@@ -27,12 +27,22 @@ function Header() {
 
       <ul>
         {user ? (
+          <>
           <li>
-            <button className="btn btn-sm" onClick={onLogout}>
+            <Link to={"/private/my-profil"} className="btn btn-sm">
               {" "}
-              <FaSignOutAlt /> deconnection{" "}
+             
+              <FaSignOutAlt /> Mon profil{" "}
+      
+            </Link>
+          </li>
+          <li>
+            <button className="btn btn-sm btn-danger" onClick={onLogout}>
+              {" "}
+              <FaSignOutAlt /> Déconection
             </button>
           </li>
+          </>
         ) : (
           ""
         )}

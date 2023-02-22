@@ -6,7 +6,6 @@ import UserItem from "../../components/UserItem";
 import { getCollects } from "../../features/collect/collectSlice";
 import { getProfil } from "../../features/user/userSlice";
 
-
 function PrivateCollectsToDo() {
 
     const {collects, isLoading, isSuccess, isError} = useSelector((state) => state.collect)
@@ -35,18 +34,20 @@ function PrivateCollectsToDo() {
     if(isLoading || !collects.data || !profil.data) {
         return <Spinner/>
     }
+   
   return (
     <>
       <section className="heading">
-        <h4>Mess collectes à effectuer</h4>
+        <h4>Mes collectes à effectuer</h4>
         <p>Listes des collectes a effectuer.</p>
     </section>
     <section>
     <div className="tickets">
             <div className="ticket-headings">
-                <div>date demande</div>
-                <div>client</div>
-                <div >status</div>
+                <div>Demande</div>
+                <div>Client</div>
+                <div >Status</div>
+                <div >Action</div>
             </div>
             {/* {collects.data.map((collect) =>(
                 <CollectItem key={collect._id} collect={collect}/>

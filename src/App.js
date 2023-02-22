@@ -22,6 +22,7 @@ import PrivateHome from "./pages/private/PrivateHome";
 import PrivateMessageArchived from "./pages/private/PrivateMessageArchived";
 import PrivateMessageDetails from "./pages/private/PrivateMessageDetails";
 import PrivateMessages from "./pages/private/PrivateMessages";
+import PrivateMyProfil from "./pages/private/PrivateMyProfil";
 import PrivateUserDetails from "./pages/private/PrivateUserDetails";
 import PrivateUserList from "./pages/private/PrivateUserList";
 import PrivateUsersAdmin from "./pages/private/PrivateUsersAdmin";
@@ -38,6 +39,7 @@ function App() {
 
             <Route path="/private" element={<Private />}>
               <Route path="/private/home" element={<PrivateHome />} />
+              <Route path="/private/my-profil" element={<PrivateMyProfil />} />
               <Route
                 path="/private/collects-points"
                 element={<PrivateCollectPoints />}

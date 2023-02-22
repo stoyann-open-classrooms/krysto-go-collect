@@ -18,7 +18,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #c8c7cf;
+  color: white;
 }
 
 p {
@@ -69,23 +69,15 @@ h3 {
 }
 
 .header ul li a {
-  display: flex;
-  align-items: center;
-}
-
-.header ul li a:hover {
-  color: #9097e1;
-}
-
-.header ul li a svg {
-  margin-right: 5px;
+  padding: 0 1rem;
 }
 
 .footer {
   height: auto;
   background-color: #9097e1;
   margin-top: 5rem;
-  color: white;
+  color: #333;
+  font-weight: bold;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -245,6 +237,9 @@ h3 {
 
 .ticket-headings {
   font-weight: 700;
+  background-color: #9097e1;
+  text-transform: uppercase;
+  color: white;
 }
 
 .status {
@@ -319,7 +314,10 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1.2rem;
+  font-size: 1rem;
+}
+.ticket-page h2 span {
+  color: #9097e1;
 }
 
 .ticket-page .btn {
@@ -434,7 +432,9 @@ footer {
 }
 .button-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 30rem;
+}
+.button-container button {
+  margin: 0 1rem;
 }/*# sourceMappingURL=index.css.map */

@@ -59,9 +59,19 @@ function PrivateUserDetails() {
             </div> */}
         </header>
         
-       
+       <div className="button-container">
+
         <button className="btn btn-block ">Modifier l'utilisateur </button>
-        <button className="btn btn-block btn-danger">Supprimerl'utilisateur </button>
+        <button className="btn btn-block btn-danger">Supprimer l'utilisateur </button>
+       </div>
+        <section>
+          <h5>Point de collecte du client</h5>
+        {user.data.collectPoints.map((collectPoint) =>(
+            <div key={collectPoint._id}>{collectPoint.waste}</div>
+            // <CollectItem key={collect._id} collect={collect}/>
+            ) )}
+        </section>
+        
     
        </div>;
 }

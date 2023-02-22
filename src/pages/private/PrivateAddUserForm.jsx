@@ -11,11 +11,33 @@ const {isLoading, isError, isSuccess, message} = useSelector((state) => state.us
 
 const dispatch = useDispatch()
 const navigate = useNavigate()
+const  [compagny , setCompagny] = useState({
+    
+})
+
     const [user, setUser] = useState({
         username: "",
         email: "",
         password: "",
         role: "",
+        // contact: {
+
+        //     firstname: "",
+        //     lastname:"",
+        //     function:"",
+        //     phone: ""
+        // },
+        // agent: {
+        //     codeAgent: "",
+        //     cafat:"",
+        //     contrat:"",
+        //     function: "",
+        //     tauxHorraire: "",
+        // },
+        // compagny: {
+        //     compagnyName: "",
+        //     ridet:""
+        // }
       });
 
 
@@ -38,13 +60,14 @@ useEffect(() => {
         dispatch(createUser(user))
     }
 
-    const handleInput = ({ currentTarget }) => {
-        const { name, value } = currentTarget;
-        setUser({
-          ...user,
-          [name]: value,
-        });
-      };
+
+    const handleInput = (e) => {
+        setUser((prevState) => ({
+          ...prevState,
+          [e.target.name]: e.target.value,
+        }))
+      }
+  
 
 if(isLoading) {
     return <Spinner/>
@@ -78,8 +101,64 @@ if(isLoading) {
                 <option value="staff">Staff</option>
             </select>
         </div>
-        <div className="form-group">
 
+        {/* ====================== REMPLIR LES OBJETS USERS POUR LA VALIDATION  ============================ */}
+
+
+        {/* <div className="form-group">
+            <label htmlFor="firstname">Prénom</label>
+            <input  onChange={handleInputContact} className='form-control' name='firstname' value={contact.firstname} type="text" />
+        </div>
+        <div className="form-group">
+            <label htmlFor="lastname">Nom</label>
+            <input  onChange={handleInputContact} className='form-control' name='lastname'value={contact.lastname} type="text" />
+        </div>
+        <div className="form-group">
+            <label htmlFor="function">Fonction</label>
+            <input  onChange={handleInputContact} className='form-control' name='function'value={contact.function} type="text" />
+        </div>
+        <hr />
+        <h5>Champs a remplir uniquement si l'utilisateur a la role partenaire (client)</h5>
+        <div className="form-group">
+            <label htmlFor="compagnyName">Nom de l'entreprise (raison social)</label>
+            <input  onChange={handleInputCompagny} className='form-control' name='compagnyName'value={compagny.compagnyName} type="text" />
+        </div>
+        <div className="form-group">
+            <label htmlFor="ridet">RIDET</label>
+            <input  onChange={handleInputCompagny} className='form-control' name='ridet'value={compagny.ridet} type="text" />
+        </div>
+        <hr />
+        <hr />
+        <h5>Champs a remplir uniquement si l'utilisateur a la role admin, ou staff</h5>
+
+        <div className="form-group">
+            <label htmlFor="codeAgent">Code Agent</label>
+            <input  onChange={handleInputAgent} className='form-control' name='codeAgent'value={agent.codeAgent} type="text" />
+        </div>
+        <div className="form-group">
+            <label htmlFor="cafat">N° Cafat</label>
+            <input  onChange={handleInputAgent} className='form-control' name='cafat' value={agent.cafat} type="text" />
+        </div>
+        <div className="form-group">
+            <label htmlFor="contrat">Type de contrat</label>
+            <select name='contrat' id='contrat'  onChange={handleInputAgent} >
+                <option value="CDI">CDI</option>
+                <option value="CDD">CDD</option>
+                <option value="CDD-temps-partiel">CDD-temps-partiel</option>
+                <option value="CDI-temps-partiel">CDI-temps-partiel</option>
+                <option value="Stagiaire">Stagiaire</option>
+            </select>
+        </div>
+        <div className="form-group">
+            <label htmlFor="funtion">Function</label>
+            <input  onChange={handleInputAgent} className='form-control' name='function'value={agent.function} type="text" />
+        </div>
+        <div className="form-group">
+            <label htmlFor="tauxHorraire">Taux horraire brut</label>
+            <input  onChange={handleInputAgent} className='form-control' name='tauxHorraire'value={agent.tauxHorraire} type="text" />
+        </div> */}
+        <div className="form-group">
+       
         <button type='submit'  className='btn btn-block'>ajouter</button>
         </div>
         </form>

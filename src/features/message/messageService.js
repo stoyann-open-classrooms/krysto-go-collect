@@ -1,5 +1,5 @@
 import axios from 'axios'
-const API_URL = 'http://localhost:8080/krysto-go/api/v1/messages'
+const API_URL =  process.env.REACT_APP_BASE_URL + '/messages'
 
 const getMessages = async () => {
   const response = await axios.get(`${API_URL}`)

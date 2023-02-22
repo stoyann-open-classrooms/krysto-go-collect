@@ -24,7 +24,7 @@ function PrivateMessageArchived() {
 return (
   <>
   <section className="heading">
-      <BackButton url={'/private/home'}/>
+      <BackButton url={'/private/messages'}/>
       <h3>Liste des Messages archivées</h3>
   </section>
   <section>

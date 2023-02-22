@@ -1,6 +1,6 @@
 import axios from "axios";
-const API_URL = "http://localhost:8080/krysto-go/api/v1/auth/me";
-const API_URL2 = "http://localhost:8080/krysto-go/api/v1/users";
+const API_URL = process.env.REACT_APP_BASE_URL + "/auth/me";
+const API_URL2 = process.env.REACT_APP_BASE_URL + "/users";
 
 
 

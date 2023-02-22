@@ -89,7 +89,12 @@ function PrivateCollectPointDetails() {
         </header>
         <section>
           <h3>Historique des collectes</h3>
-
+          <div className="ticket-headings">
+            <div>date demande</div>
+            <div>quantité collecté</div>
+            <div >status</div>
+            <div >voir</div>
+        </div>
           {collectPoint.data.collects
             .filter((collect) => collect.status === "done")
             .map((collect) => (
