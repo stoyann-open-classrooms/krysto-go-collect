@@ -12,7 +12,7 @@ const initialState = {
 }
 
 
-// Get all collects
+// Get all messages
 export const getMessages = createAsyncThunk(
   'messages/getAll',
   async (_, thunkAPI) => {
@@ -61,22 +61,28 @@ export const closeMessage = createAsyncThunk(
     }
   },
 )
-// export const closeMessage = createAsyncThunk(
-//   'messages/get',
-//   async (messageId, thunkAPI) => {
-//     try {
-//       return await messageService.closeMessage(messageId)
-//     } catch (error) {
-//       const message =
-//         (error.response &&
-//           error.response.data &&
-//           error.response.data.message) ||
-//         error.message ||
-//         error.toString()
-//       return thunkAPI.rejectWithValue(message)
-//     }
-//   },
-// )
+
+
+
+// create new message
+export const createNewMessage = createAsyncThunk(
+  'messages/createNew',
+  async (thunkAPI) => {
+    try {
+    
+      return await messageService.createNewMessage()
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.msg) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  },
+)
+
+
+
 
 export const messageSlice = createSlice({
   name: 'message',
@@ -116,6 +122,20 @@ export const messageSlice = createSlice({
         state.message = action.payload
         state.messageData = null
       })
+      .addCase(createNewMessage.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createNewMessage.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+
+      })
+      .addCase(createNewMessage.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.messageData = action.payload;
+      })
+
    
       .addCase(closeMessage.fulfilled, (state, action) => {
         state.isLoading = false

@@ -46,6 +46,7 @@ export const getCollect = createAsyncThunk(
   },
 )
 
+
 export const collectSlice = createSlice({
   name: 'collect',
   initialState,
@@ -84,6 +85,11 @@ export const collectSlice = createSlice({
         state.message = action.payload
         state.collect = null
       })
+     
+     
+     
+     
+    
 
   
   },

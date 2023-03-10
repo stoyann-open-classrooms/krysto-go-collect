@@ -4,7 +4,7 @@ import { FaSignInAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { login, reset } from "../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-import Spinner from "../components/spinner/Spinner";
+import Spinner from "../components/shared/spinner/Spinner";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -63,13 +63,17 @@ function Login() {
 
   return (
     <>
+
       {user ? (
         <>
          <section className="heading">
           Bienvenue sur l'application KRYSTO-GO !
          </section>
-          <Link className="btn btn-sm" to={"/private/home"}>
+          <Link className="btn " to={"/private/home"}>
             Accueil
+          </Link>
+          <Link className="btn btn-reverse" to={"/private/documentation"}>
+            Documentation
           </Link>
         </>
       ) : (

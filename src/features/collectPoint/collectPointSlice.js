@@ -46,6 +46,45 @@ export const getCollectPoint = createAsyncThunk(
   },
 )
 
+
+// create new collect
+export const createNewCollect = createAsyncThunk(
+  'collectPoints/create',
+  async (collectPointId, thunkAPI) => {
+    try {
+    
+      return await collectPointService.createNewCollect(collectPointId)
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.msg) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  },
+)
+// create new collect
+export const createNewCollectPoint = createAsyncThunk(
+  'collectPoints/createNew',
+  async (thunkAPI) => {
+    try {
+    
+      return await collectPointService.createNewCollectPoint()
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.msg) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  },
+)
+
+
+
+
+
+
 export const collectPointSlice = createSlice({
   name: 'collectPoint',
   initialState,
@@ -83,6 +122,32 @@ export const collectPointSlice = createSlice({
         state.isError = true
         state.message = action.payload
         state.collectPoint = null
+      })
+      .addCase(createNewCollect.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createNewCollect.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+
+      })
+      .addCase(createNewCollect.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(createNewCollectPoint.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createNewCollectPoint.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+
+      })
+      .addCase(createNewCollectPoint.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       })
 
   

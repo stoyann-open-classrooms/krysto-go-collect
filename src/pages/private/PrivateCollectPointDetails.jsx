@@ -2,14 +2,23 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  createNewCollect,
   getCollectPoint,
   reset,
 } from "../../features/collectPoint/collectPointSlice";
-import Spinner from "../../components/spinner/Spinner";
+import Spinner from "../../components/shared/spinner/Spinner";
 import { toast } from "react-toastify";
 import QRCode from "qrcode.react";
-import { BackButton } from "../../components/BackButton";
+import { BackButton } from "../../components/shared/BackButton";
 import CollectItem from "../../components/CollectItem";
+import {
+  CircleMarker,
+  MapContainer,
+  Marker,
+  Popup,
+  TileLayer,
+} from "react-leaflet";
+
 
 function PrivateCollectPointDetails() {
   const { collectPoint, isLoading, isSuccess, isError, message } = useSelector(
@@ -25,6 +34,27 @@ function PrivateCollectPointDetails() {
     dispatch(getCollectPoint(params.id));
     // eslint-disable-next-line
   }, [isError, message, params.id]);
+
+console.log(collectPoint);
+   const newCollect = () => {
+    const verifyIfCollect = collectPoint.data.collects.filter((collect) => collect.status === "todo")
+    console.log(verifyIfCollect);
+    if(verifyIfCollect.length > 0) {
+      toast.error('une collecte à déja ete demander')
+    } else {
+      dispatch(createNewCollect(params.id))
+      toast.success('La demande de collecte a bien ete effectuer')
+      setTimeout(() => {
+        
+        window.location.reload()
+      }, 500);
+    }
+    
+    
+ 
+  }
+
+
 
   if (!collectPoint.data || isLoading) {
     return <Spinner />;
@@ -42,6 +72,11 @@ function PrivateCollectPointDetails() {
               <CollectItem key={collect.id} collect={collect} />
          </>
             ))}
+           
+           
+    <button onClick={newCollect} className="btn btn-block btn-danger">Demander une collecte</button>
+      
+      
       <section className="heading">
         <BackButton url={"/private/collects-todo"} />
         <h3>Détail point de collecte</h3>
@@ -63,11 +98,12 @@ function PrivateCollectPointDetails() {
             <span>
               <div>
                 <QRCode
-                  value={[collectPoint?.data?.waste, collectPoint?.data?.id]}
+                  value={`${process.env.REACT_APP_BASE_FRONT_URL}` + "/" + `${collectPoint?.data?.id}`}
                 />
               </div>
             </span>
           </h2>
+          <h2>Total déchet collecté : <span>{collectPoint.data.totalRecycled} KG</span></h2>
           <hr />
 
           {/* <h2>
@@ -87,8 +123,30 @@ function PrivateCollectPointDetails() {
             <p>{collectPoint.data.location.formattedAddress}</p>
           </div>
         </header>
+        <h3 className="title">Geolocalisation</h3>
+        <div className="leaflet-container">
+
+        <MapContainer
+          style={{ height: "100%", width: "100%" }}
+          center={[collectPoint.data.location.coordinates[1],collectPoint.data.location.coordinates[0]]}
+          zoom={17}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={[collectPoint.data.location.coordinates[1],collectPoint.data.location.coordinates[0]]}>
+            <Popup>
+              {collectPoint.data.location.formattedAddress} <br />
+            </Popup>
+          </Marker>
+         
+        </MapContainer>
+ 
+      </div>
         <section>
-          <h3>Historique des collectes</h3>
+          <h3 className="title">Historique des collectes</h3>
           <div className="ticket-headings">
             <div>date demande</div>
             <div>quantité collecté</div>
@@ -101,7 +159,11 @@ function PrivateCollectPointDetails() {
               <CollectItem key={collect.id} collect={collect} />
             ))}
         </section>
+
+   
+
       </div>
+      
     </>
   );
 }

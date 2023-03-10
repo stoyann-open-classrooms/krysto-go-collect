@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { BackButton } from '../../components/BackButton';
-import Spinner from '../../components/spinner/Spinner';
+import { BackButton } from '../../components/shared/BackButton';
+import Spinner from '../../components/shared/spinner/Spinner';
+
 import { getUser } from '../../features/user/userSlice';
 function PrivateUserDetails() {
     const { user, isLoading, isSuccess, isError, message } = useSelector(

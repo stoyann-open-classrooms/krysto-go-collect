@@ -1,5 +1,5 @@
 
-import Loader from '../../assets/krysto_loader.svg'
+import Loader from '../../../assets/krysto_loader.svg'
 import './spinner.css'
 function Spinner() {
   return (

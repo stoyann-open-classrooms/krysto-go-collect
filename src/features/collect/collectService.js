@@ -1,5 +1,5 @@
 import axios from 'axios'
-const API_URL = process.env.REACT_APP_BASE_URL + '/collects'
+const API_URL = process.env.REACT_APP_BASE_API_URL + '/collects'
 
 const getCollects = async () => {
   const response = await axios.get(`${API_URL}`)
@@ -12,9 +12,11 @@ const getCollect = async (collectId) => {
 
 
 
+
 const collectService = {
   getCollects,
   getCollect,
+ 
 }
 
 export default collectService

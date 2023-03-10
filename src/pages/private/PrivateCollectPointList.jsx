@@ -1,11 +1,11 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 
-import Spinner from "../../components/spinner/Spinner" 
 
-import { BackButton } from "../../components/BackButton"
 import { getCollectPoints } from "../../features/collectPoint/collectPointSlice"
 import CollectPointItem from "../../components/CollectPointItem"
+import Spinner from "../../components/shared/spinner/Spinner"
+import { BackButton } from "../../components/shared/BackButton"
 
 function PrivateCollectPointList() {
 
@@ -36,7 +36,7 @@ function PrivateCollectPointList() {
             <div className="ticket-headings">
                 <div>date de création</div>
                 <div >partenaire</div>
-                <div >déchets</div>
+                <div>Total recyclé</div>
             </div>
             {collectPoints.data.map((collectPoint) =>(
                 <CollectPointItem key={collectPoint._id} collectPoint={collectPoint} />

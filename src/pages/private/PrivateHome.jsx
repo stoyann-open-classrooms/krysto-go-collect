@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getProfil, reset } from "../../features/user/userSlice";
-import Spinner from "../../components/spinner/Spinner";
 import {MdLocalCarWash , MdPersonAdd} from 'react-icons/md'
 import {BsFillPinMapFill} from 'react-icons/bs'
 import {FiUsers} from 'react-icons/fi'
 import {FaHistory} from 'react-icons/fa'
 import {AiOutlineMessage} from 'react-icons/ai'
+import Spinner from "../../components/shared/spinner/Spinner";
 
 function PrivateHome() {
   const { profil, isLoading, isError, isSuccess } = useSelector(
@@ -40,8 +40,9 @@ function PrivateHome() {
         </section>
 
         <section className="container">
-      
-          <Link className="btn btn-block" to={"/private/collects-todo"}>
+
+        
+          <Link className="btn btn-block " to={"/private/collects-todo"}>
             <MdLocalCarWash/>
           Commencer mes collectes
           </Link>
@@ -57,18 +58,31 @@ function PrivateHome() {
                 Liste des collectes en cours
               </Link>
               <Link
-                className="btn btn-block btn-reverse "
+                className="btn btn-block btn-reverse"
+                to={"/private/dashboard"}
+              >
+               Tableaux de bord
+              </Link>
+              <Link
+                className="btn btn-block btn-reverse"
                 to={"/private/collects-points"}
               >
                 <BsFillPinMapFill/>
                 Gérer les points de collectes
               </Link>
               <Link
-                className="btn btn-block btn-reverse "
+                className="btn btn-block btn-reverse"
                 to={"/private/collects-assign"}
               >
                 <MdPersonAdd/>
                 Assigner les collectes
+              </Link>
+              <Link
+                className="btn btn-block btn-reverse"
+                to={"/private/wastes"}
+              >
+                <MdPersonAdd/>
+               Gérer les types de déchets
               </Link>
               <Link
                 className="btn btn-block btn-reverse"
@@ -83,6 +97,13 @@ function PrivateHome() {
               >
                 <FaHistory/>
                Historique des collectes
+              </Link>
+              <Link
+                className="btn btn-block btn-reverse"
+                to={"/private/certificats"}
+              >
+               
+               Certificats de destruction
               </Link>
               <Link
                 className="btn btn-block btn-reverse"

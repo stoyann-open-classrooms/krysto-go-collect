@@ -1,10 +1,12 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getUsers , reset } from "../../features/user/userSlice"
-import Spinner from "../../components/spinner/Spinner" 
+
 import UserItem from "../../components/UserItem"
-import { BackButton } from "../../components/BackButton"
+
 import SearchBar from "../../components/SearchBar"
+import Spinner from "../../components/shared/spinner/Spinner"
+import { BackButton } from "../../components/shared/BackButton"
 
 function PrivateUserList() {
 

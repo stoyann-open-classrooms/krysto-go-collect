@@ -2,7 +2,8 @@ import {useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify'
-import Spinner from '../../components/spinner/Spinner';
+import Spinner from '../../components/shared/spinner/Spinner';
+
 import {createUser, reset} from '../../features/user/userSlice'
 
 function PrivateAddUserForm() {
@@ -96,9 +97,10 @@ if(isLoading) {
         <div className="form-group">
             <label htmlFor="role">role</label>
             <select name='role' id='role'  onChange={handleInput} >
-                <option value="partner">Partner</option>
-                <option value="admin">Admin</option>
-                <option value="staff">Staff</option>
+                <option value="partner">Partenaire</option>
+                <option value="admin">Administrateur</option>
+                <option value="staff">Agent de collecte</option>
+                <option value="recycler">Recycleur</option>
             </select>
         </div>
 

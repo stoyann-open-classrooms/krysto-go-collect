@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import  { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CollectItem from '../../components/CollectItem'
-import Spinner from '../../components/spinner/Spinner'
+import Spinner from '../../components/shared/spinner/Spinner'
+
 import { getCollects } from '../../features/collect/collectSlice'
 
 function PrivateAllCollectsTodo() {

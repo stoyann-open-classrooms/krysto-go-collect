@@ -15,6 +15,12 @@
   text-align: center;
 }
 
+.title{
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -38,7 +44,6 @@
 .header ul li a {
   padding: 0 1rem;
 }
-
 
 
 .footer{
@@ -131,6 +136,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 1rem 0;
 }
 
 .btn svg {
@@ -148,13 +154,14 @@
 }
 
 .btn-sm {
-  padding: 5px 15px;
-  font-size: 13px;
+  padding: 5px 1rem;
+  font-size: 0.6rem;
 }
 
 .btn-danger {
   background: $danger;
   border: none;
+  color: white;
 }
 
 .btn-back {
@@ -190,7 +197,21 @@
   font-size: 1.3rem;
 }
 
-.ticket,
+
+
+
+
+
+
+
+.container-flex-center{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
 .ticket-headings {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -198,34 +219,19 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  background: #f4f4f4;
   padding: 10px 15px;
   border-radius: 5px;
   text-align: center;
   color: $dark;
-}
-
-.ticket-headings {
+  font-size: 0.6rem;
   font-weight: 700;
   background-color: $primary;
   text-transform: uppercase;
   color: white;
+ 
 }
 
-.status {
-  background-color: #333;
-  color: #fff;
-  width: 100px;
-  padding: 3px 20px;
-  justify-self: center;
-  display: flex;
- justify-content: center;
-  align-items: center;
-  margin: 10px 0;
-  border-radius: 10px;
-  font-size: 16px;
-  text-align: center;
-}
+
 
 .collect-done {
   background-color: $green;
@@ -340,9 +346,9 @@
 .btn-close {
   background: none;
   border: none;
-  color:  $primary;
+  color:  $danger;
   position: absolute;
-  top: 5px;
+  top: -1rem;
   right: 5px;
   font-size: 16px;
   cursor: pointer;
@@ -380,6 +386,38 @@ footer {
   text-align: center;
 }
 
+.certificat-container {
+  border: 5px $primary solid;
+  padding: 1rem;
+  .title-certificat-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+.leaflet-container {
+
+  height: 20rem;
+  background-color: #fff;
+
+}
+
+
+
+.documentation{
+  text-align: left;
+  h1, h2 {
+    text-align: center;
+    margin: 1rem 0;
+  }
+  p{
+    text-align: center;
+    color: $primary;
+  }
+}
 
 @media (max-width: 600px) {
   .boxes {

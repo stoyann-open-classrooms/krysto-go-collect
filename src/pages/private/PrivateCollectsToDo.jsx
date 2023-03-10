@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CollectItem from "../../components/CollectItem";
-import Spinner from "../../components/spinner/Spinner";
-import UserItem from "../../components/UserItem";
+import Spinner from "../../components/shared/spinner/Spinner";
 import { getCollects } from "../../features/collect/collectSlice";
 import { getProfil } from "../../features/user/userSlice";
 

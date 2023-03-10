@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Ticket from './shared/ticket/Ticket'
 
 function CollectPointItem({collectPoint}) {
   return (
-    <div className='ticket'>
+    <Ticket>
         <div>{new Date(collectPoint.createdAt).toLocaleDateString()}</div>
         <div>{collectPoint.partnerName}</div>
-        <div>{collectPoint.waste}</div>
+        {collectPoint.totalRecycled ? ( <div>{collectPoint.totalRecycled} KG</div>) : ( <div>0 KG</div> )}
        
         <Link className='btn btn-reverse btn-sm' to={`/private/collect-points/${collectPoint._id}`}>Détails</Link>
-    </div>
+    </Ticket>
   )
 }
 

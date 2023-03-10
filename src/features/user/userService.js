@@ -1,10 +1,6 @@
 import axios from "axios";
-const API_URL = process.env.REACT_APP_BASE_URL + "/auth/me";
-const API_URL2 = process.env.REACT_APP_BASE_URL + "/users";
-
-
-
-
+const API_URL = process.env.REACT_APP_BASE_API_URL + "/auth/me";
+const API_URL2 = process.env.REACT_APP_BASE_API_URL + "/users";
 
 
 

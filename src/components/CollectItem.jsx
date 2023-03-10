@@ -1,17 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {IoEyeSharp} from 'react-icons/io5'
+import Ticket from './shared/ticket/Ticket'
+import Status from './shared/status/Status'
 
 function CollectItem({collect}) {
 
   return (
-    <div className='ticket'>
+    <Ticket>
         <div>{new Date(collect.collectDemandeDate).toLocaleDateString()}</div>
          {collect.collectPoint.partnerName ? (<div>{collect.collectPoint.partnerName}</div>) : ("")}
          {collect.quantityCollected ? (<div>{collect.quantityCollected} KG</div>) : ("")}
-        <div className={`status collect-${collect.status}`} >{collect.status}</div>
+         <Status text={collect.status} statusType={collect.status}/>
         <Link className='btn btn-reverse btn-sm' to={`/private/collect-details/${collect._id}`}><IoEyeSharp/> Détails</Link>
-    </div>
+    </Ticket>
   )
 }
 

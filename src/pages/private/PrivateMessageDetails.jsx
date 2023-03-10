@@ -2,9 +2,11 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { useParams , useNavigate } from "react-router-dom";
-import Spinner from "../../components/spinner/Spinner";
+
 import { toast } from "react-toastify";
-import { BackButton } from "../../components/BackButton";
+import { BackButton } from "../../components/shared/BackButton";
+import Spinner from "../../components/shared/spinner/Spinner";
+
 import { getMessage, reset , closeMessage } from "../../features/message/messageSlice";
 
 function PrivateMessageDetails() {
@@ -32,7 +34,7 @@ const onTicketClose = () => {
 }
 
   if (!messageData.data || isLoading) {
-    return <Spinner />;
+    return <Spinner/>;
   }
   if (isError) {
     return <h3>Une erreur est survenue merci de réesayer.</h3>;

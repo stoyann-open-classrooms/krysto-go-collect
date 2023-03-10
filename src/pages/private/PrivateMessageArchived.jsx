@@ -1,9 +1,10 @@
 
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { BackButton } from '../../components/BackButton'
+
 import MessageItem from '../../components/MessageItem'
-import Spinner from '../../components/spinner/Spinner'
+import { BackButton } from '../../components/shared/BackButton'
+import Spinner from '../../components/shared/spinner/Spinner'
 import { getMessages } from '../../features/message/messageSlice'
 
 function PrivateMessageArchived() {

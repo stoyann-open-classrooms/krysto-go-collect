@@ -10,7 +10,9 @@ import Login from "./pages/Login";
 import Private from "./pages/private/Private";
 import PrivateAddCollectPoint from "./pages/private/PrivateAddCollectPoint";
 import PrivateAddUserForm from "./pages/private/PrivateAddUserForm";
+import PrivateAddWaste from "./pages/private/PrivateAddWaste";
 import PrivateAllCollectsTodo from "./pages/private/PrivateAllCollectsTodo";
+import PrivateCertificats from "./pages/private/PrivateCertificats";
 import PrivateCollectDetails from "./pages/private/PrivateCollectDetails";
 import PrivateCollectHistoric from "./pages/private/PrivateCollectHistoric";
 import PrivateCollectPointDetails from "./pages/private/PrivateCollectPointDetails";
@@ -18,6 +20,8 @@ import PrivateCollectPointList from "./pages/private/PrivateCollectPointList";
 import PrivateCollectPoints from "./pages/private/PrivateCollectPoints";
 import PrivateCollectsAssign from "./pages/private/PrivateCollectsAssign";
 import PrivateCollectsToDo from "./pages/private/PrivateCollectsToDo";
+import PrivateDashboard from "./pages/private/PrivateDashboard";
+import PrivateDocumentation from "./pages/private/PrivateDocumentation";
 import PrivateHome from "./pages/private/PrivateHome";
 import PrivateMessageArchived from "./pages/private/PrivateMessageArchived";
 import PrivateMessageDetails from "./pages/private/PrivateMessageDetails";
@@ -26,6 +30,8 @@ import PrivateMyProfil from "./pages/private/PrivateMyProfil";
 import PrivateUserDetails from "./pages/private/PrivateUserDetails";
 import PrivateUserList from "./pages/private/PrivateUserList";
 import PrivateUsersAdmin from "./pages/private/PrivateUsersAdmin";
+import PrivateWasteDetail from "./pages/private/PrivateWasteDetail";
+import PrivateWastes from "./pages/private/PrivateWastes";
 
 function App() {
   return (
@@ -77,6 +83,10 @@ function App() {
                 element={<PrivateCollectHistoric />}
               />
               <Route
+                path="/private/dashboard"
+                element={<PrivateDashboard />}
+              />
+              <Route
                 path="/private/add-new-user"
                 element={<PrivateAddUserForm/>}
               />
@@ -96,8 +106,16 @@ function App() {
                 path="/private/message-details/:id"
                 element={<PrivateMessageDetails />}
               />
+              <Route path="/private/wastes" element={<PrivateWastes />} />
+                 <Route
+                path="/private/waste/:id"
+                element={<PrivateWasteDetail />}
+              />
+              <Route path="/private/wastes/new-waste" element={<PrivateAddWaste />} />
+              <Route path="/private/certificats" element={<PrivateCertificats />} />
               <Route path="/private/messages" element={<PrivateMessages />} />
               <Route path="/private/messages-archived" element={<PrivateMessageArchived />} />
+              <Route path="/private/documentation" element={<PrivateDocumentation />} />
             </Route>
           </Routes>
         </div>

@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CollectAssignItem from "../../components/CollectAssignItem";
+
 import CollectItem from "../../components/CollectItem";
-import Spinner from "../../components/spinner/Spinner";
+import Spinner from "../../components/shared/spinner/Spinner";
+
 import UserItem from "../../components/UserItem";
-import { getCollects } from "../../features/collect/collectSlice";
+import { asignCollect, getCollects, updateCollect } from "../../features/collect/collectSlice";
+import { getUsers } from "../../features/user/userSlice";
 
 
 
@@ -11,19 +15,25 @@ import { getCollects } from "../../features/collect/collectSlice";
 function PrivateCollectsAssign() {
 
 
+  const { users } = useSelector((state) => state.user);
 
     const {collects, isLoading, isSuccess, isError} = useSelector((state) => state.collect)
 
     const dispatch = useDispatch()
 
 
+ 
     useEffect(() => {
         dispatch(getCollects())
     }, [dispatch])
 
-    console.log(collects.data);
+    useEffect(() => {
+        dispatch(getUsers())
+    }, [dispatch])
 
-    if(isLoading || !collects.data) {
+    
+
+    if(isLoading || !collects.data || !users.data) {
         return <Spinner/>
     }
   return (
@@ -40,11 +50,14 @@ function PrivateCollectsAssign() {
             <div className="ticket-headings">
                 <div>date demande</div>
                 <div>client</div>
-                <div >status</div>
+                <div>Status</div>
+                <div>Action</div>
             </div>
        
             {collects.data.filter(collect => collect.assigned === false).map((collect) =>(
-                <CollectItem key={collect._id} collect={collect}/>
+              <>
+               <CollectAssignItem key={collect._id} collect={collect}/>
+              </>
             ) )}
         </div>
     </section>

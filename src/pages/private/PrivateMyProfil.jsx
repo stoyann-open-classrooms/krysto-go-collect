@@ -1,7 +1,8 @@
 import {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { BackButton } from '../../components/BackButton';
-import Spinner from '../../components/spinner/Spinner';
+import { BackButton } from '../../components/shared/BackButton';
+import Spinner from '../../components/shared/spinner/Spinner';
+
 import { getProfil } from '../../features/user/userSlice';
 
 function PrivateMyProfil() {

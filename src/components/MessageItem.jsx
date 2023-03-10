@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Ticket from './shared/ticket/Ticket'
 
 function MessageItem({message}) {
   return (
-    <div className='ticket'>
+    <Ticket>
         <div>{new Date(message.createdAt).toLocaleDateString()}</div>
         <div>{message.object}</div>
         
@@ -11,7 +12,7 @@ function MessageItem({message}) {
             {message.status}
           </div>
         <Link className='btn btn-reverse btn-sm' to={`/private/message-details/${message._id}`}>Détails</Link>
-    </div>
+    </Ticket>
   )
 }
 
